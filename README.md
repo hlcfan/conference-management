@@ -14,4 +14,6 @@ ruby app.rb sample_2.csv
 rspec
 ```
 
+### ✍️Note
+Main algo/logic is in https://github.com/hlcfan/conference-management/blob/master/arranger.rb#L28-L95
 

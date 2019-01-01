@@ -26,10 +26,12 @@ class Window
   end
 
   def print time
+    outputs = []
     @talks.each do |talk|
-      puts "#{format_time(time)} #{talk.title} #{talk.length}"
+      outputs << "#{format_time(time)} #{talk.title} #{talk.length}"
       time += talk.length * 60
     end
+    yield(outputs) if block_given?
 
     time
   end

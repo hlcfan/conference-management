@@ -50,7 +50,7 @@ RSpec.describe Window do
   end
 
   describe "#print" do
-    it "prints talks with timestamp by given time" do
+    it "returns talks with timestamp by given time" do
       talk_1 = Talk.new("Rails session", 30)
       talk_2 = Talk.new("Swift introduction", 40)
       talk_3 = Talk.new("Go and micro-services", 60)
@@ -59,10 +59,9 @@ RSpec.describe Window do
       window.append(talk_3)
       now = Time.now
       time = Time.new(now.year, now.month, now.day, 9, 0, 0)
-      expect(STDOUT).to receive(:puts).with("09:00AM Rails session 30")
-      expect(STDOUT).to receive(:puts).with("09:30AM Swift introduction 40")
-      expect(STDOUT).to receive(:puts).with("10:10AM Go and micro-services 60")
-      window.print time
+      window.print( time ) do |output|
+        expect(output).to eq(["09:00AM Rails session 30", "09:30AM Swift introduction 40", "10:10AM Go and micro-services 60"])
+      end
     end
   end
 

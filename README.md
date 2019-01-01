@@ -1,4 +1,4 @@
-# Conference management
+# 🏨Conference management
 
 ### 🏃 Run
 ```
